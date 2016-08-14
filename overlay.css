@@ -1,0 +1,41 @@
+body {
+    font-size: 0px;
+}
+
+#now-playing-container {
+    display: none;
+}
+
+#now-playing-container:before, #now-playing-container:after {
+    display: inline-block;
+    content: " ";
+    height: 39px;
+    width: 39px;
+    margin-bottom: -11px;
+    background-color: rgba(30, 33, 36, 0.95);
+}
+
+#now-playing-container:before {
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 0%);
+}
+
+#now-playing-container:after {
+    -webkit-clip-path: polygon(0% 0%, 100% 100%, 100% 100%, 0% 100%);
+    margin-left: -0.5px;
+}
+
+#now-playing-text {
+    display: inline-block;
+    height: 31px;
+    line-height: 31px;
+    background-color: rgba(30, 33, 36, 0.95);
+    color: white;
+    font-family: "Whitney", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    padding-left: 6px;
+    padding-right: 12px;
+    text-align: left;
+}
