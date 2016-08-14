@@ -1,0 +1,34 @@
+/*
+  This CSS is included directly in OBS  when showing the
+  Discord voice chat widget.
+  I'm recording it here so I don't accidentally delete it.
+*/
+
+body {
+    background-color: rgba(0, 0, 0, 0);
+    margin: 0px auto;
+    overflow: hidden;
+}
+
+.avatar {
+    display: none;
+}
+
+span.name {
+    display: inline-block;
+    height: 31px;
+    line-height: 31px;
+    border-radius: 0px !important;
+    padding-right: 10px !important;
+    min-width: 130px;
+}
+
+div.user:before {
+    display: inline-block;
+    content: " ";
+    height: 39px;
+    width: 39px;
+    margin-bottom: -11px;
+    background-color: rgba(30, 33, 36, 0.95);
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 0%);
+}
