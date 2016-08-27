@@ -2,11 +2,11 @@ body {
     font-size: 0px;
 }
 
-#now-playing-container {
+.status-container {
     display: none;
 }
 
-#now-playing-container:before, #now-playing-container:after {
+.status-container:before, .status-container:after {
     display: inline-block;
     content: " ";
     height: 39px;
@@ -15,16 +15,17 @@ body {
     background-color: rgba(30, 33, 36, 0.95);
 }
 
-#now-playing-container:before {
+.status-container:before {
     -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 0%);
+    margin-right: -0.5px;
 }
 
-#now-playing-container:after {
+.status-container:after {
     -webkit-clip-path: polygon(0% 0%, 100% 100%, 100% 100%, 0% 100%);
     margin-left: -0.5px;
 }
 
-#now-playing-text {
+.status-text {
     display: inline-block;
     height: 31px;
     line-height: 31px;
@@ -38,6 +39,18 @@ body {
     padding-left: 6px;
     padding-right: 12px;
     text-align: left;
+}
+
+#now-playing-container {
+    margin-left: -25px;
+}
+
+#follower-text span.value {
+  color: #FF3D00;
+}
+
+#now-playing-text span.prefix {
+  color: #00C853;
 }
 
 @font-face {
