@@ -9,10 +9,10 @@
     <script type="text/javascript">
       var barElem = document.getElementById('statusbar');
       var lastFollow = new Widget('most_recent_follower.txt', 'follower', barElem);
-      lastFollow.setPrefix("Last follower: ")
+      lastFollow.prefix = 'Last follower: ';
 
       var nowPlaying = new Widget('now-playing.txt', 'now-playing', barElem);
-      nowPlaying.prefix = "\u25BA "
+      nowPlaying.prefix = "\u25BA ";
 
       lastFollow.startUpdates();
       nowPlaying.startUpdates();

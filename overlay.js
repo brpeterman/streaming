@@ -12,14 +12,6 @@ class Widget {
         this.createWidget(parent);
     }
 
-    setPrefix(text) {
-      this.prefix = text;
-    }
-
-    setSuffix(text) {
-      this.suffix = text;
-    }
-
     createWidget(parent) {
       var containElem = document.createElement('div');
       containElem.id = this.id + '-container';
