@@ -15,7 +15,7 @@ class Widget {
     createWidget(parent) {
       var containElem = document.createElement('div');
       containElem.id = this.id + '-container';
-      containElem.className = 'status-container';
+      containElem.className = 'status-container hidden';
       var textElem = document.createElement('div');
       textElem.id = this.id + '-text';
       textElem.className = 'status-text';
@@ -44,10 +44,10 @@ class Widget {
             if (prefixNode) textElem.appendChild(prefixNode);
             if (textNode) textElem.appendChild(textNode);
             if (suffixNode) textElem.appendChild(suffixNode);
-            containElem.style.display = 'inline-block';
+            containElem.classList.remove('hidden');
         }
         else {
-            containElem.style.display = 'none';
+            containElem.classList.add('hidden');
         }
     }
 

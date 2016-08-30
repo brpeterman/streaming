@@ -3,7 +3,12 @@ body {
 }
 
 .status-container {
-    display: none;
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+.status-container.hidden {
+    opacity: 0;
 }
 
 .status-container:before, .status-container:after {
