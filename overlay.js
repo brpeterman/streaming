@@ -4,10 +4,12 @@ class Widget {
      * [identifier] String to include in element IDs.
      * [parent] Element to anchor the widget to.
      */
-    constructor(source, identifier, parent) {
+    constructor(source, identifier, parent, options) {
         this.source = source;
         this.id = identifier;
         this.httpRequest = null;
+        this._options = options;
+        this._currentText = '';
 
         this.createWidget(parent);
     }
@@ -37,14 +39,21 @@ class Widget {
         if (!textElem || !containElem) return;
 
         if (text.length > 0) {
-            textElem.innerHTML = "";
-            var prefixNode = this.buildNode('prefix', this.prefix);
-            var suffixNode = this.buildNode('suffix', this.suffix);
-            var textNode = this.buildNode('value', text);
-            if (prefixNode) textElem.appendChild(prefixNode);
-            if (textNode) textElem.appendChild(textNode);
-            if (suffixNode) textElem.appendChild(suffixNode);
-            containElem.classList.remove('hidden');
+            if (text !== this._currentText) {
+                this._currentText = text;
+                textElem.innerHTML = "";
+                var prefixNode = this.buildNode('prefix', this.prefix);
+                var suffixNode = this.buildNode('suffix', this.suffix);
+                var textNode = this.buildNode('value', text);
+                if (prefixNode) textElem.appendChild(prefixNode);
+                if (textNode) textElem.appendChild(textNode);
+                if (suffixNode) textElem.appendChild(suffixNode);
+                containElem.classList.remove('hidden');
+
+                if (this._options.fade) {
+                  setTimeout(() => containElem.classList.add('hidden'), this._options.fadeDelay);
+                }
+            }
         }
         else {
             containElem.classList.add('hidden');

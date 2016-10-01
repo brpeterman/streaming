@@ -11,7 +11,10 @@
       var lastFollow = new Widget('most_recent_follower.txt', 'follower', barElem);
       lastFollow.prefix = 'Last follower: ';
 
-      var nowPlaying = new Widget('now-playing.txt', 'now-playing', barElem);
+      var nowPlaying = new Widget('now-playing.txt', 'now-playing', barElem, {
+        fade: true,
+        fadeDelay: 7000
+      });
       nowPlaying.prefix = "\u25BA ";
 
       lastFollow.startUpdates();
