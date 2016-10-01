@@ -5,7 +5,8 @@ body {
 .status-container {
     display: inline-block;
     opacity: 1;
-    transition: opacity 0.5s ease-in;
+    max-width: 1000px;
+    transition: opacity 0.5s ease-in, max-width 0.5s ease-in;
 }
 .status-container.hidden {
     opacity: 0;
@@ -51,7 +52,7 @@ body {
 }
 
 #follower-text span.value {
-  color: #FF3D00;
+  color: #FFEB3B;
 }
 
 #now-playing-text span.prefix {
