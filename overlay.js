@@ -9,6 +9,7 @@ class Widget {
         this.id = identifier;
         this.httpRequest = null;
         this._options = options;
+        if (!options) this._options = {};
         this._currentText = '';
 
         this.createWidget(parent);
@@ -21,6 +22,7 @@ class Widget {
       var textElem = document.createElement('div');
       textElem.id = this.id + '-text';
       textElem.className = 'status-text';
+      textElem.innerText = '_';
       containElem.appendChild(textElem);
       parent.appendChild(containElem);
     }
