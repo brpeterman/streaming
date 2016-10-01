@@ -18,8 +18,8 @@ span.name {
     display: inline-block;
     height: 31px;
     line-height: 31px;
-    border-radius: 0px !important;
-    padding-right: 10px !important;
+    border-radius: 0px;
+    padding-right: 10px;
     min-width: 130px;
 }
 
