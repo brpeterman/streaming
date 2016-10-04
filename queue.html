@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="overlay.css" />
+    <script type="text/javascript" src="overlay.js"></script>
+  </head>
+  <body>
+    <div id="queue-container"></div>
+    <script type="text/javascript">
+      function setupWebsocket() {
+        const uri = 'ws://192.168.1.7:8802'
+        const ws = new WebSocket(uri);
+
+        ws.onopen = () => {
+          const subMsg = {
+            action: 'subscribe',
+            event: 'queue'
+          };
+          ws.send(JSON.stringify(subMsg));
+        };
+
+        ws.onclose = () => {
+          // try to reconnect
+          setTimeout(() => setupWebsocket(), 1000);
+        };
+
+        ws.onmessage = (event) => {
+          const msg = JSON.parse(event.data);
+          if (msg.event === 'queue') {
+            const queueMsg = {
+              action: 'getQueue'
+            };
+            ws.send(JSON.stringify(queueMsg));
+          }
+          else if (msg.action === 'getQueue') {
+            const queue = msg.value;
+            if (!queue || queue.length === 0) return;
+
+            displayQueue(queue);
+          }
+        };
+      }
+
+      function displayQueue(queue) {
+        if (queue.length > 3) {
+          queue = queue.slice(0, 2);
+        }
+
+        const queueElem = document.getElementById('queue-container');
+        queueElem.innerHTML = '';
+
+        const headerElem = document.createElement('div');
+        headerElem.id = 'queue-header';
+        headerElem.className = 'hidden';
+        headerElem.innerText = 'Next up';
+        queueElem.appendChild(headerElem);
+
+        for (let i in queue) {
+          let track = queue[i];
+          let titleElem = document.createElement('span');
+          titleElem.className = 'track-title';
+          titleElem.innerText = track.title;
+          let artistElem = document.createElement('span');
+          artistElem.className = 'track-artist';
+          artistElem.innerText = track.artist;
+          let byElem = document.createTextNode(' by ');
+          let textElem = document.createElement('div');
+          textElem.className = 'track';
+          textElem.appendChild(titleElem);
+          textElem.appendChild(byElem);
+          textElem.appendChild(artistElem);
+          let trackElem = document.createElement('div');
+          trackElem.className = 'track-container hidden';
+          trackElem.appendChild(textElem);
+          queueElem.appendChild(trackElem);
+        }
+
+        animateQueue();
+      }
+
+      function animateQueue() {
+        const queueElem = document.getElementById('queue-container');
+        let delay = 100;
+        const step = 100;
+        const timeOnScreen = 7000;
+        for (let i in queueElem.children) {
+          let trackElem = queueElem.children[i];
+          if (trackElem.classList) {
+            (function swipeIn(elem) {
+              setTimeout(() => {
+                elem.classList.remove('hidden');
+                setTimeout(() => elem.classList.add('hidden'), timeOnScreen);
+              }, delay);
+            })(trackElem);
+            delay += step;
+          }
+        }
+      }
+
+      setupWebsocket();
+    </script>
+  </body>
+</html>
