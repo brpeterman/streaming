@@ -1,34 +1,90 @@
-/*
-  This CSS is included directly in OBS when showing the
-  TwitchAlerts widget.
-  I'm recording it here so it doesn't get accidentally lost.
-*/
-
-body { background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; }
+.widget-AlertBox {
+    position: relative;
+}
+body,
+html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+#wrap {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+#alert-box {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+#alert-box.hidden,
+.hidden {
+    opacity: 0;
+}
+#alert-text {
+    padding: 20px;
+    text-shadow: 0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000, 0px 0px 5px #000;
+}
+#alert-message,
+#alert-user-message {
+    text-align: center;
+}
+#alert-user-message img {
+    vertical-align: middle;
+    height: 1em;
+}
+#alert-image {
+    position: relative;
+}
+#alert-image video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#alert-message > span > span {
+    display: inline-block;
+}
+#alert-image {
+    z-index: 6;
+    position: relative;
+}
+#alert-text {
+    z-index: 6;
+    position: relative;
+}
+#alert-text-wrap {
+    z-index: 6;
+    position: relative;
+}
 
 #alert-text:before, #alert-text:after {
     display: inline-block;
     content: " ";
-    height: 75px;
-    width: 75px;
-    margin-bottom: -16px;
+    height: 85px;
+    width: 85px;
+    margin-bottom: -26px;
     background-color: rgba(30, 33, 36, 0.95);
 }
 
 #alert-text:before {
     -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 0%);
+    margin-right: -5px;
 }
 
 #alert-text:after {
     -webkit-clip-path: polygon(0% 0%, 100% 100%, 100% 100%, 0% 100%);
-    margin-left: -0.5px;
+    margin-left: -5px;
 }
 
 #alert-message {
     display: inline-block;
     height: 60px;
-    padding-top: 5px;
-    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
     line-height: 60px;
     background-color: rgba(30, 33, 36, 0.95);
 }
