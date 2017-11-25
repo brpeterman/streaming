@@ -23,12 +23,12 @@ body {
 
 .status-container:before, .track-container:before {
     -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 0%);
-    margin-right: -0.5px;
-}
+    margin-right: -0.2px;
+ }
 
 .status-container:after, .track-container:after {
     -webkit-clip-path: polygon(0% 0%, 100% 100%, 100% 100%, 0% 100%);
-    /*margin-left: -0.5px;*/
+    margin-left: -0.2px;
 }
 
 .status-text, .track {
@@ -100,5 +100,5 @@ body {
     font-family: Whitney;
     font-style: medium;
     font-weight: 600;
-    src: url(Whitney.woff) format('woff')
+    src: url(Whitney.woff2) format('woff')
 }

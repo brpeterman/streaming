@@ -43,7 +43,7 @@ class Widget {
     if (!textElem || !containElem) return;
 
     if (text.length > 0) {
-      if (text !== this._currentText) {
+      if (text !== this._currentText || (containElem.classList.contains('hidden') && !this._options.fade)) {
         this._currentText = text;
         textElem.innerHTML = "";
         const prefixNode = this._buildNode('prefix', this.prefix);
